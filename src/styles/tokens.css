@@ -1,0 +1,23 @@
+:root {
+  color-scheme: light;
+  --navy-950: #061331;
+  --navy-900: #071b44;
+  --navy-850: #09245a;
+  --navy-800: #0a2d72;
+  --cyan: #18d8df;
+  --cyan-dark: #0aa8b3;
+  --purple: #7937e8;
+  --purple-dark: #5524c2;
+  --blue: #1168e8;
+  --green: #13b889;
+  --orange: #ff7b13;
+  --gold: #ffc72c;
+  --ink: #06143a;
+  --muted: #5d6b88;
+  --line: #dfe7f5;
+  --panel: #ffffff;
+  --radius-md: 16px;
+  --shadow: 0 18px 45px rgb(7 26 68 / 18%);
+  --soft-shadow: 0 12px 32px rgb(16 42 86 / 12%);
+  --font: "Trebuchet MS", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}

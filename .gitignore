@@ -13,3 +13,4 @@ server-*.log
 node_modules/
 dist/
 build/
+coverage/

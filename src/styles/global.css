@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 8%, rgb(23 216 223 / 20%), transparent 26rem),
+    radial-gradient(circle at 86% 4%, rgb(121 55 232 / 18%), transparent 24rem),
+    linear-gradient(180deg, #061331 0%, #09275f 44%, #eaf3ff 44%, #f6fbff 100%);
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgb(24 216 223 / 55%);
+  outline-offset: 3px;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+}
+
+.muted {
+  color: var(--muted);
+  font-weight: 800;
+}
