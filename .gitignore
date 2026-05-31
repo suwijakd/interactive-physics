@@ -1,0 +1,15 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local QA artifacts
+qa-*.png
+server-*.log
+.qa-chrome-profile*/
+
+# Dependency/build folders if this prototype later becomes a bundled app
+node_modules/
+dist/
+build/
