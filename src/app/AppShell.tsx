@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import type { LabPhase } from "./routes";
+import type { AppView, LabPhase } from "./routes";
 
 const urlByPhase: Record<LabPhase, string> = {
   mission: "learnphenom.com/lab/pendulum/mission",
@@ -7,7 +7,32 @@ const urlByPhase: Record<LabPhase, string> = {
   results: "learnphenom.com/lab/pendulum/results",
 };
 
-export function AppShell({ children, phase }: PropsWithChildren<{ phase: LabPhase }>) {
+const urlByView: Record<AppView, string> = {
+  dashboard: "learnphenom.com/dashboard",
+  labs: "learnphenom.com/labs",
+  quests: "learnphenom.com/quests",
+  notebook: "learnphenom.com/notebook",
+  badges: "learnphenom.com/badges",
+  pendulum: urlByPhase.mission,
+};
+
+const navItems: Array<{ view: AppView; label: string }> = [
+  { view: "dashboard", label: "Dashboard" },
+  { view: "labs", label: "Labs" },
+  { view: "quests", label: "Quests" },
+  { view: "notebook", label: "Notebook" },
+  { view: "badges", label: "Badges" },
+];
+
+export function AppShell({
+  children,
+  currentView,
+  activeView,
+  phase,
+  onNavigate,
+}: PropsWithChildren<{ currentView: AppView; activeView: AppView; phase: LabPhase; onNavigate: (view: AppView) => void }>) {
+  const address = currentView === "pendulum" ? urlByPhase[phase] : urlByView[currentView];
+
   return (
     <main className="app" aria-label="LearnPhenom interactive physics platform">
       <div className="browser-bar" aria-hidden="true">
@@ -16,7 +41,7 @@ export function AppShell({ children, phase }: PropsWithChildren<{ phase: LabPhas
           <span />
           <span />
         </div>
-        <div className="address">{urlByPhase[phase]}</div>
+        <div className="address">{address}</div>
         <div className="browser-menu">
           <span />
           <span />
@@ -25,7 +50,7 @@ export function AppShell({ children, phase }: PropsWithChildren<{ phase: LabPhas
       </div>
 
       <header className="top-nav">
-        <div className="brand">
+        <button className="brand brand-button" type="button" onClick={() => onNavigate("dashboard")}>
           <div className="brand-mark" aria-hidden="true">
             <div className="brand-core">LP</div>
           </div>
@@ -33,14 +58,20 @@ export function AppShell({ children, phase }: PropsWithChildren<{ phase: LabPhas
             <h1>LearnPhenom</h1>
             <p>Discover. Explore. Understand.</p>
           </div>
-        </div>
+        </button>
 
         <nav className="nav-links" aria-label="Primary">
-          <span>Dashboard</span>
-          <span className="active">Labs</span>
-          <span>Quests</span>
-          <span>Notebook</span>
-          <span>Badges</span>
+          {navItems.map((item) => (
+            <button
+              key={item.view}
+              type="button"
+              className={activeView === item.view ? "active" : ""}
+              aria-current={activeView === item.view ? "page" : undefined}
+              onClick={() => onNavigate(item.view)}
+            >
+              {item.label}
+            </button>
+          ))}
         </nav>
 
         <div className="profile">

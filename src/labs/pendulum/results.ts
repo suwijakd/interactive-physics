@@ -19,14 +19,3 @@ export function createRun(id: number, settings: PendulumSettings): PendulumRun {
     warn: outcome.warn,
   };
 }
-
-export function seedRuns(): PendulumRun[] {
-  return [0.05, 0.35, 0.65].map((theta0, index) =>
-    createRun(index + 1, {
-      mass: 1,
-      length: 2,
-      theta0,
-      omega0: 0,
-    }),
-  );
-}

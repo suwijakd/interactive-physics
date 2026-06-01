@@ -26,7 +26,17 @@ input {
 
 button {
   border: 0;
+  cursor: default;
+}
+
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+input[type="range"] {
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 button:focus-visible,
